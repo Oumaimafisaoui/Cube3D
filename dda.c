@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:39:22 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:25:06 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:26:29 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ void dda(t_all *cub, char walls[][10])
     double xx1 = cub->player->x;
     double yy1 = cub->player->y;
 
-    cub->player->ang = M_PI;
-
-    printf("ang: %f\n", cub->player->ang);
     x1 = cub->player->x + (sin(cub->player->ang) * VIEW);
     y1 = cub->player->y + (cos(cub->player->ang) * VIEW);
-    printf("ang: %f %f\n", x1, y1);
     int steps= 0;
 
     double xinc = 0;

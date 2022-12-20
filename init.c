@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:18:41 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:26:13 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void init(t_all *cub, t_player *mario)
     mario->x = 0;
     mario->y = 0;
     cub->player = NULL;
-    mario->ang = 0;
+    mario->ang = M_PI;
     mario->speed = 0;
 }
 
