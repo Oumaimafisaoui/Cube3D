@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 16:46:24 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:02:53 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void draw_minimap(t_all *cub, char walls[][10])
     }
 }
 
-void move_player(t_all *cub, t_player *mario, char walls[][10])
+void put_player(t_all *cub, t_player *mario, char walls[][10])
 {
     int i = 0;
     int j = 0;
@@ -108,7 +108,7 @@ void move_player(t_all *cub, t_player *mario, char walls[][10])
             {
                     mario->x = (i * TTL) + TTL / 2;
                     mario->y = (j * TTL) + TTL / 2;
-                    printf("%d|%d\n", mario->x, mario->y);
+                    printf("%f|%f\n", mario->x, mario->y);
                     my_mlx_pixel_put(cub, mario->y, mario->x, 0x00FFFFFF);
 
                     //x = cos(o) * h + xs

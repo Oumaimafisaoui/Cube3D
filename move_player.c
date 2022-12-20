@@ -6,13 +6,14 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:27:59 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 16:11:51 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:50:21 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// // this file is empty because the map should be added to the structure adn whenever it s put somewhere it gives an error
+// this file is empty because the map should be added to the structure adn whenever it s put somewhere it gives an error
+
 // int	do_moves2(t_all *cub, int index1, int index2)
 // {
 // 	if (cub->parse[index1][index2] == 'E')
