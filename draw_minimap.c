@@ -6,24 +6,12 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 16:02:10 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:46:24 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "header.h"
-
-char walls[7][10] = 
-    {
-        {'1','1','1','1','1','1','1','1','1','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','N','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','1','1','1','1','1','1','1','1','1'},   
-    };
-
 
 void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 {
@@ -33,7 +21,7 @@ void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void draw_minimap(t_all *cub)
+void draw_minimap(t_all *cub, char walls[][10])
 {
 	int i = 0;
     int j = 0;
@@ -102,7 +90,7 @@ void draw_minimap(t_all *cub)
     }
 }
 
-void move_player(t_all *cub, t_player *mario)
+void move_player(t_all *cub, t_player *mario, char walls[][10])
 {
     int i = 0;
     int j = 0;
