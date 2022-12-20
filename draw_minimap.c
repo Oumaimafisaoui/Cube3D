@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 15:12:29 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:25:50 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+//if you find a 
 
 void draw_minimap(t_all *cub)
 {
@@ -64,6 +65,22 @@ void draw_minimap(t_all *cub)
                      x++;
                 }
             }
+            else if(walls[i][j] == '0')
+            {
+                while(x < (i * TTL) + TTL) 
+                {
+                     y = j * TTL;
+                     while (y < (j * TTL) + TTL)
+                     {
+                        if (x % TTL == 0 || y % TTL == 0)
+                            my_mlx_pixel_put(cub, y, x, 0x00000000);
+                        else
+                            my_mlx_pixel_put(cub, y, x,0x009966FF);
+                        y++;
+                     }
+                     x++;
+                }
+            }
             else
             {
                 while(x < (i * TTL) + TTL) 
@@ -74,44 +91,12 @@ void draw_minimap(t_all *cub)
                         if (x % TTL == 0 || y % TTL == 0)
                             my_mlx_pixel_put(cub, y, x, 0x00000000);
                         else
-                            my_mlx_pixel_put(cub, y, x,0x00FF00CC);
+                            my_mlx_pixel_put(cub, y, x,0x00FF3333);
                         y++;
                      }
                      x++;
                 }
             }
-            // else if(walls[i][j] == ' ')
-            // {
-            //     while(x < (i * TTL) + TTL) 
-            //     {
-            //          y = j * TTL;
-            //          while (y < (j * TTL) + TTL)
-            //          {
-            //             if (x % TTL == 0 || y % TTL == 0)
-            //                 my_mlx_pixel_put(cub, y, x, 0x00000000);
-            //             else
-            //                 my_mlx_pixel_put(cub, y, x,0x0033FF00);
-            //             y++;
-            //          }
-            //          x++;
-            //     }
-            // }
-            // else
-            // {
-            //        while(x < ((i * TTL) + TTL)) 
-            //         {
-            //             y = j * TTL;
-            //             while (y < ((j * TTL) + TTL))
-            //             {
-            //                 if (x % TTL == 0 || y % TTL == 0)
-            //                     my_mlx_pixel_put(cub, y, x, 0x00000000);
-            //                 else
-            //                     my_mlx_pixel_put(cub, y, x, 0x000000FF);
-            //                 y++;
-            //             }
-            //             x++;
-            //         }
-            // }
             j++;
         }
         i++;
