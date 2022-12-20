@@ -6,22 +6,12 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 13:42:30 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:26:07 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char walls[7][10] = 
-    {
-        {'1','1','1','1','1','1','1','1','1','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','N','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','1','1','1','1','1','1','1','1','1'},   
-    };
 
 void init(t_all *cub)
 {
@@ -38,21 +28,10 @@ void init(t_all *cub)
     cub->map_w = 10 * TTL;
 }
 
-void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = cub->addr + (y * cub->line_length + x * (cub->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 
 void launch_mlx(t_all *cub)
 {
-    int i = 0;
-    int j = 0;
-    int x = 0;
-    int y = 0;
+  
 
     cub->mlx = mlx_init();
     if (cub->mlx == NULL)
@@ -63,85 +42,10 @@ void launch_mlx(t_all *cub)
 	cub->img = mlx_new_image(cub->mlx, cub->map_w, cub->map_h);
 	cub->addr = mlx_get_data_addr(cub->img, &cub->bits_per_pixel, &cub->line_length,
 								&cub->endian);
-
-    while(i < cub->map_h / TTL)
-    {
-        j = 0;
-        while(j < cub->map_w / TTL)
-        {
-            x = i * TTL;
-            if (walls[i][j] == '1')
-            {
-                while(x < (i * TTL) + TTL) 
-                {
-                     y = j * TTL;
-                     while (y < (j * TTL) + TTL)
-                     {
-                        if (x % TTL == 0 || y % TTL == 0)
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
-                        else
-                            my_mlx_pixel_put(cub, y, x, 0x00FFFF00);
-                        y++;
-                     }
-                     x++;
-                }
-            }
-            else if(walls[i][j] == '0')
-            {
-                while(x < (i * TTL) + TTL) 
-                {
-                     y = j * TTL;
-                     while (y < (j * TTL) + TTL)
-                     {
-                        if (x % TTL == 0 || y % TTL == 0)
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
-                        else
-                            my_mlx_pixel_put(cub, y, x,0x00FF00CC);
-                        y++;
-                     }
-                     x++;
-                }
-            }
-            else if(walls[i][j] == ' ')
-            {
-                while(x < (i * TTL) + TTL) 
-                {
-                     y = j * TTL;
-                     while (y < (j * TTL) + TTL)
-                     {
-                        if (x % TTL == 0 || y % TTL == 0)
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
-                        else
-                            my_mlx_pixel_put(cub, y, x,0x0033FF00);
-                        y++;
-                     }
-                     x++;
-                }
-            }
-            else
-            {
-                   while(x < (i * TTL) + TTL) 
-                    {
-                        y = j * TTL;
-                        while (y < (j * TTL) + TTL)
-                        {
-                            if (x % TTL == 0 || y % TTL == 0)
-                                my_mlx_pixel_put(cub, y, x, 0x00000000);
-                            else
-                                my_mlx_pixel_put(cub, y, x, 0x000000FF);
-                            y++;
-                        }
-                        x++;
-                    }
-            }
-            j++;
-        }
-        i++;
-    }
+    draw_minimap(cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);
 }
-
 
 
 void	error(char *str)

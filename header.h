@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 13:41:01 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:25:26 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void init(t_all *cub);
 void	error(char *str);
 void launch_mlx(t_all *cub);
 void draw_minimap(t_all *cub);
+void	my_mlx_pixel_put(t_all *cub, int x, int y, int color);
 /*Cub3d outils*/
 
 void	ft_putstr_fd(char *s, int fd);
