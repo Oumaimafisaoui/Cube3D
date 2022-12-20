@@ -6,14 +6,14 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 14:26:07 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:52:43 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 
-void init(t_all *cub)
+void init(t_all *cub, t_player *mario)
 {
     cub->mlx = NULL;
     cub->mlx_win = NULL;
@@ -26,13 +26,14 @@ void init(t_all *cub)
     cub->y = 0;
     cub->map_h = 7 * TTL;
     cub->map_w = 10 * TTL;
+    mario->x = 0;
+    mario->y = 0;
 }
 
 
-void launch_mlx(t_all *cub)
+void launch_mlx(t_all *cub, t_player *mario)
 {
-  
-
+    // (void)mario;
     cub->mlx = mlx_init();
     if (cub->mlx == NULL)
 		error("mlx_init failed\n");
@@ -43,6 +44,7 @@ void launch_mlx(t_all *cub)
 	cub->addr = mlx_get_data_addr(cub->img, &cub->bits_per_pixel, &cub->line_length,
 								&cub->endian);
     draw_minimap(cub);
+    move_player(cub, mario);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);
 }

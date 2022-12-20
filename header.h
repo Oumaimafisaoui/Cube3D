@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 14:25:26 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:05:52 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stddef.h>
+#include <math.h>
 
 #define TTL  60
-
 
 
 
@@ -47,11 +47,12 @@ typedef struct s_player
 }t_player;
 
 /* Cub3d */
-void init(t_all *cub);
+void init(t_all *cub, t_player *mario);
 void	error(char *str);
-void launch_mlx(t_all *cub);
+void launch_mlx(t_all *cub, t_player* mario);
 void draw_minimap(t_all *cub);
 void	my_mlx_pixel_put(t_all *cub, int x, int y, int color);
+void move_player(t_all *cub, t_player *mario);
 /*Cub3d outils*/
 
 void	ft_putstr_fd(char *s, int fd);

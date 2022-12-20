@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 14:25:17 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:10:38 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,59 @@ void draw_minimap(t_all *cub)
         }
         i++;
     }
+}
+
+#include <stdio.h>
+void move_player(t_all *cub, t_player *mario)
+{
+    int i = 0;
+    int j = 0;
+    int h;
+    int angle;
+    int xp;
+    int yp;
+
+   while(i < cub->map_h / TTL)
+    {
+        j = 0;
+        while(j < cub->map_w / TTL)
+        {
+            if (walls[i][j] == 'N') //it can be other directions
+            {
+                // while(x < (i * TTL) + TTL) 
+                // {
+                     //y = j * TTL;
+                    mario->x = (i * 60) + TTL/2;
+                    mario->y = (j * 60) + TTL/2;
+                    printf("%d|%d\n", mario->x, mario->y);
+                    my_mlx_pixel_put(cub, mario->y, mario->x, 0x00FFFFFF);
+
+                    //x = cos(o) * h + xs
+                    //y = sin(o) * h + ys
+                    h = 1;
+                    while(h < 6)
+                    {
+                        angle = 0;
+                        while(angle < 360)
+                        {
+                            xp = cos(angle) * h + mario->x;
+                            yp = sin(angle) * h + mario->y;
+                              my_mlx_pixel_put(cub, yp, xp, 0x00FFFFFF);
+                            angle++;
+                        }
+                        h++;
+                    }
+                //         else
+                //             my_mlx_pixel_put(cub, y, x, 0x00FFFF00);
+                //         y++;
+                //      }
+                //      x++;
+                // }
+            }
+ 
+            j++;
+        }
+        i++;
+    }
+
 }
