@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 14:52:43 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:59:08 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void init(t_all *cub, t_player *mario)
     cub->map_w = 10 * TTL;
     mario->x = 0;
     mario->y = 0;
+    cub->player = NULL;
 }
 
 
@@ -45,6 +46,7 @@ void launch_mlx(t_all *cub, t_player *mario)
 								&cub->endian);
     draw_minimap(cub);
     move_player(cub, mario);
+    hook_player(cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);
 }

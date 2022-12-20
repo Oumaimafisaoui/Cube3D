@@ -6,10 +6,11 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 15:25:50 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:02:10 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "header.h"
 
 char walls[7][10] = 
@@ -31,8 +32,6 @@ void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 	dst = cub->addr + (y * cub->line_length + x * (cub->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-
-//if you find a 
 
 void draw_minimap(t_all *cub)
 {
@@ -103,7 +102,6 @@ void draw_minimap(t_all *cub)
     }
 }
 
-#include <stdio.h>
 void move_player(t_all *cub, t_player *mario)
 {
     int i = 0;
@@ -120,8 +118,8 @@ void move_player(t_all *cub, t_player *mario)
         {
             if (walls[i][j] == 'N' || walls[i][j] == 'S' || walls[i][j] == 'W' || walls[i][j] == 'E') //it can be other directions
             {
-                    mario->x = (i * 60) + TTL/2;
-                    mario->y = (j * 60) + TTL/2;
+                    mario->x = (i * TTL) + TTL / 2;
+                    mario->y = (j * TTL) + TTL / 2;
                     printf("%d|%d\n", mario->x, mario->y);
                     my_mlx_pixel_put(cub, mario->y, mario->x, 0x00FFFFFF);
 
@@ -146,5 +144,9 @@ void move_player(t_all *cub, t_player *mario)
         }
         i++;
     }
+    cub->player = mario; //because I need it in mouvemnets
 
 }
+
+
+
