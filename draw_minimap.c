@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 15:10:38 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:12:29 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,8 @@ void move_player(t_all *cub, t_player *mario)
         j = 0;
         while(j < cub->map_w / TTL)
         {
-            if (walls[i][j] == 'N') //it can be other directions
+            if (walls[i][j] == 'N' || walls[i][j] == 'S' || walls[i][j] == 'W' || walls[i][j] == 'E') //it can be other directions
             {
-                // while(x < (i * TTL) + TTL) 
-                // {
-                     //y = j * TTL;
                     mario->x = (i * 60) + TTL/2;
                     mario->y = (j * 60) + TTL/2;
                     printf("%d|%d\n", mario->x, mario->y);
@@ -158,12 +155,6 @@ void move_player(t_all *cub, t_player *mario)
                         }
                         h++;
                     }
-                //         else
-                //             my_mlx_pixel_put(cub, y, x, 0x00FFFF00);
-                //         y++;
-                //      }
-                //      x++;
-                // }
             }
  
             j++;
