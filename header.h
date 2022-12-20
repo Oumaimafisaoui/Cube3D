@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 13:27:46 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:41:01 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 #include <unistd.h>
 #include <stddef.h>
 
-#define PIX_SIZE = 10;
-#define  MAP_HEIGHT = 30;
-#define MAP_WIDTH = 20;
+#define TTL  60
+
 
 
 
@@ -43,8 +42,10 @@ typedef struct s_cub
 typedef struct s_player
 {
     int x;
-    int y; 
+    int y;
+    
 }t_player;
+
 /* Cub3d */
 void init(t_all *cub);
 void	error(char *str);

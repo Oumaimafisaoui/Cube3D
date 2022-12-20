@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 13:31:06 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:42:30 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char walls[7][10] =
     {
         {'1','1','1','1','1','1','1','1','1','1'}, 
         {'1','0','0','0','0','0','0','0','0','1'}, 
+        {'1','0','0','0','0','N','0','0','0','1'}, 
         {'1','0','0','0','0','0','0','0','0','1'}, 
         {'1','0','0','0','0','0','0','0','0','1'}, 
-        {'1','0','0','0','0','0','0','0','P','1'}, 
         {'1','0','0','0','0','0','0','0','0','1'}, 
         {'1','1','1','1','1','1','1','1','1','1'},   
     };
@@ -34,8 +34,8 @@ void init(t_all *cub)
     cub->endian = 0;
     cub->x = 0;
     cub->y = 0;
-    cub->map_h = 7 * 32;
-    cub->map_w = 10 * 32;
+    cub->map_h = 7 * TTL;
+    cub->map_w = 10 * TTL;
 }
 
 void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
@@ -45,6 +45,7 @@ void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 	dst = cub->addr + (y * cub->line_length + x * (cub->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
+
 
 void launch_mlx(t_all *cub)
 {
@@ -63,20 +64,20 @@ void launch_mlx(t_all *cub)
 	cub->addr = mlx_get_data_addr(cub->img, &cub->bits_per_pixel, &cub->line_length,
 								&cub->endian);
 
-    while(i < 7)
+    while(i < cub->map_h / TTL)
     {
         j = 0;
-        while(j < 10)
+        while(j < cub->map_w / TTL)
         {
-            x = i * 32;
+            x = i * TTL;
             if (walls[i][j] == '1')
             {
-                while(x < (i * 32) + 32) 
+                while(x < (i * TTL) + TTL) 
                 {
-                     y = j * 32;
-                     while (y < (j * 32) + 32)
+                     y = j * TTL;
+                     while (y < (j * TTL) + TTL)
                      {
-                        if (x % 32 == 0 || y % 32 == 0)
+                        if (x % TTL == 0 || y % TTL == 0)
                             my_mlx_pixel_put(cub, y, x, 0x00000000);
                         else
                             my_mlx_pixel_put(cub, y, x, 0x00FFFF00);
@@ -87,12 +88,12 @@ void launch_mlx(t_all *cub)
             }
             else if(walls[i][j] == '0')
             {
-                while(x < (i * 32) + 32) 
+                while(x < (i * TTL) + TTL) 
                 {
-                     y = j * 32;
-                     while (y < (j * 32) + 32)
+                     y = j * TTL;
+                     while (y < (j * TTL) + TTL)
                      {
-                        if (x % 32 == 0 || y % 32 == 0)
+                        if (x % TTL == 0 || y % TTL == 0)
                             my_mlx_pixel_put(cub, y, x, 0x00000000);
                         else
                             my_mlx_pixel_put(cub, y, x,0x00FF00CC);
@@ -101,14 +102,14 @@ void launch_mlx(t_all *cub)
                      x++;
                 }
             }
-            else
+            else if(walls[i][j] == ' ')
             {
-                 while(x < (i * 32) + 32) 
+                while(x < (i * TTL) + TTL) 
                 {
-                     y = j * 32;
-                     while (y < (j * 32) + 32)
+                     y = j * TTL;
+                     while (y < (j * TTL) + TTL)
                      {
-                        if (x % 32 == 0 || y % 32 == 0)
+                        if (x % TTL == 0 || y % TTL == 0)
                             my_mlx_pixel_put(cub, y, x, 0x00000000);
                         else
                             my_mlx_pixel_put(cub, y, x,0x0033FF00);
@@ -117,14 +118,31 @@ void launch_mlx(t_all *cub)
                      x++;
                 }
             }
+            else
+            {
+                   while(x < (i * TTL) + TTL) 
+                    {
+                        y = j * TTL;
+                        while (y < (j * TTL) + TTL)
+                        {
+                            if (x % TTL == 0 || y % TTL == 0)
+                                my_mlx_pixel_put(cub, y, x, 0x00000000);
+                            else
+                                my_mlx_pixel_put(cub, y, x, 0x000000FF);
+                            y++;
+                        }
+                        x++;
+                    }
+            }
             j++;
         }
         i++;
     }
-
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);
 }
+
+
 
 void	error(char *str)
 {
