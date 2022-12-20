@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:02:53 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:06:46 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_all *cub, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void draw_minimap(t_all *cub, char walls[][10])
+void draw_minimap(t_all *cub)
 {
 	int i = 0;
     int j = 0;
@@ -35,7 +35,7 @@ void draw_minimap(t_all *cub, char walls[][10])
         {
            
             x = i * TTL;
-            if (walls[i][j] == '1')
+            if (cub->walls[i][j] == '1')
             {
                 //    fill_wall(cub, i, j, walls);
                 while(x < (i * TTL) + TTL) 
@@ -52,7 +52,7 @@ void draw_minimap(t_all *cub, char walls[][10])
                      x++;
                 }
             }
-            else if(walls[i][j] == '0')
+            else if(cub->walls[i][j] == '0')
             {
                 while(x < (i * TTL) + TTL) 
                 {
@@ -90,7 +90,7 @@ void draw_minimap(t_all *cub, char walls[][10])
     }
 }
 
-void put_player(t_all *cub, t_player *mario, char walls[][10])
+void put_player(t_all *cub, t_player *mario)
 {
     int i = 0;
     int j = 0;
@@ -104,7 +104,7 @@ void put_player(t_all *cub, t_player *mario, char walls[][10])
         j = 0;
         while(j < cub->map_w / TTL)
         {
-            if (walls[i][j] == 'N' || walls[i][j] == 'S' || walls[i][j] == 'W' || walls[i][j] == 'E') //it can be other directions
+            if (cub->walls[i][j] == 'N' || cub->walls[i][j] == 'S' || cub->walls[i][j] == 'W' || cub->walls[i][j] == 'E') //it can be other directions
             {
                     mario->x = (i * TTL) + TTL / 2;
                     mario->y = (j * TTL) + TTL / 2;

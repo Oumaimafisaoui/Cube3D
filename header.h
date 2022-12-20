@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:23:23 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:07:00 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_cub
     int map_w;
     int map_h;
     t_player *player;
+    char walls[7][10];
 } t_all;
 
 //all walls should be removed and added to a struct
@@ -62,13 +63,13 @@ typedef struct s_cub
 /* Cub3d */
 void init(t_all *cub, t_player *mario);
 void	error(char *str);
-void launch_mlx(t_all *cub, t_player *mario, char walls[][10]);
-void draw_minimap(t_all *cub, char walls[][10]);
+void launch_mlx(t_all *cub, t_player *mario);
+void draw_minimap(t_all *cub);
 void	my_mlx_pixel_put(t_all *cub, int x, int y, int color);
-void put_player(t_all *cub, t_player *mario, char walls[][10]);
+void put_player(t_all *cub, t_player *mario);
 void hook_player(t_all* cub);
 int	mouvements(int key, t_all *cub);
-void dda(t_all *cub, char walls[][10]);
+void dda(t_all *cub);
 
 /*Cub3d outils*/
 

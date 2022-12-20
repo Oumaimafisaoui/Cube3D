@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:26:13 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:07:11 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,25 @@ void init(t_all *cub, t_player *mario)
     cub->player = NULL;
     mario->ang = M_PI;
     mario->speed = 0;
+    char walls[7][10] = {
+    {'1','1','1','1','1','1','1','1','1','1'}, 
+    {'1','0','0','0','0','0','0','0','0','1'}, 
+    {'1','0','0','0','0','N','0','0','0','1'}, 
+    {'1','0','0','0','0','0','0','0','0','1'}, 
+    {'1','0','0','0','0','0','0','0','0','1'}, 
+    {'1','0','0','0','0','0','0','0','0','1'}, 
+    {'1','1','1','1','1','1','1','1','1','1'},   
+    };
+    for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 10; j++) 
+        {
+            cub->walls[i][j] = walls[i][j];
+        }
+    }
 }
 
 
-void launch_mlx(t_all *cub, t_player *mario, char walls[][10])
+void launch_mlx(t_all *cub, t_player *mario)
 {
     // (void)mario;
     cub->mlx = mlx_init();
@@ -46,9 +61,9 @@ void launch_mlx(t_all *cub, t_player *mario, char walls[][10])
 	cub->img = mlx_new_image(cub->mlx, cub->map_w, cub->map_h);
 	cub->addr = mlx_get_data_addr(cub->img, &cub->bits_per_pixel, &cub->line_length,
 								&cub->endian);
-    draw_minimap(cub, walls);
-    put_player(cub, mario, walls);
-    dda(cub, walls);
+    draw_minimap(cub);
+    put_player(cub, mario);
+    dda(cub);
     // hook_player(cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);

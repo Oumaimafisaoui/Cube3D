@@ -6,15 +6,14 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:39:22 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 19:26:29 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:57:26 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
-void dda(t_all *cub, char walls[][10])
+void dda(t_all *cub)
 {
-    (void)walls;
     double x1;
     double y1;
     double xx1 = cub->player->x;
