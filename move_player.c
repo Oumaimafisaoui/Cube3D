@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:27:59 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 21:27:20 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:08:26 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,66 @@ int	exit_program(t_all *cub)
 	exit(0);
 }
 
-void event_left_right(t_all *cub, int key)
+int check_walls(t_all *cub, int flag)
 {
-	int	x;
+    int	x;
 	int	y;
-    // int move;
     double angle;
 
-    // printf("%f ::: %f\n", cub->player.x, cub->player.y);
-	y = cub->player.y;
-	x = cub->player.x;
+    if(flag == 1)
+    {
+       angle = cub->player.ang - (90 * (M_PI / 180));
+       x =  (cub->player.x - (sin(angle) * cub->player.speed)) / CUBE;
+       y =  (cub->player.y - (cos(angle) * cub->player.speed)) / CUBE;
+
+       if(cub->walls[x][y] == '1')
+       {
+            return (1);
+       }
+       else
+       {
+            return (0);
+       }
+    }
+    else if(flag == 0)
+    {
+        angle = cub->player.ang + (90 * (M_PI / 180));
+        x = (cub->player.x - (sin(angle) * cub->player.speed)) / CUBE;
+        y =  (cub->player.y - (cos(angle) * cub->player.speed)) / CUBE;
+        
+        if(cub->walls[x][y] == '1')
+        {
+                return (1);
+        }
+       else
+        {
+                return (0);
+        }
+    }
+    return (1);
     
+}
+void event_left_right(t_all *cub, int key)
+{
+    double angle;
+
 	if (key == RIGHT) 
 	{
-		// cub->player.walk_direction = 1;
-        // move = cub->player.walk_direction * cub->player.speed;
-        angle = cub->player.ang - (90 * (M_PI / 180));
-        cub->player.x -= sin(angle) * cub->player.speed;
-        cub->player.y -= cos(angle) * cub->player.speed;
+        if(!check_walls(cub, 1))
+        {
+            angle = cub->player.ang - (90 * (M_PI / 180));
+            cub->player.x -= (sin(angle) * cub->player.speed);
+            cub->player.y -= (cos(angle) * cub->player.speed);
+        }
 	}
 	else if (key == LEFT) 
 	{
-        angle = cub->player.ang + (90 * (M_PI / 180));
-        cub->player.x -= sin(angle) * cub->player.speed;
-        cub->player.y -= cos(angle) * cub->player.speed;
+        if(!check_walls(cub, 0))
+        {
+            angle = cub->player.ang + (90 * (M_PI / 180));
+            cub->player.x -= (sin(angle) * cub->player.speed);
+            cub->player.y -= (cos(angle) * cub->player.speed);
+        }
     }
 }
 
