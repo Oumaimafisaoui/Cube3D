@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:27:59 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 21:08:42 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 21:27:20 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,27 @@ void event_left_right(t_all *cub, int key)
 {
 	int	x;
 	int	y;
-    int move;
+    // int move;
+    double angle;
 
     // printf("%f ::: %f\n", cub->player.x, cub->player.y);
 	y = cub->player.y;
 	x = cub->player.x;
+    
 	if (key == RIGHT) 
 	{
-		cub->player.walk_direction = 1;
-        move = cub->player.walk_direction * cub->player.speed;
-        cub->player.x += cos(cub->player.ang) * move;
-        cub->player.y += sin(cub->player.ang) * move;
+		// cub->player.walk_direction = 1;
+        // move = cub->player.walk_direction * cub->player.speed;
+        angle = cub->player.ang - (90 * (M_PI / 180));
+        cub->player.x -= sin(angle) * cub->player.speed;
+        cub->player.y -= cos(angle) * cub->player.speed;
 	}
-	if (key == LEFT) 
+	else if (key == LEFT) 
 	{
-		cub->player.walk_direction = -1;
-        move = cub->player.walk_direction * cub->player.speed;
-        cub->player.x += sin(cub->player.ang) * move;
-        cub->player.y += cos(cub->player.ang) * move;
-	}
+        angle = cub->player.ang + (90 * (M_PI / 180));
+        cub->player.x -= sin(angle) * cub->player.speed;
+        cub->player.y -= cos(angle) * cub->player.speed;
+    }
 }
 
 void event_up_down(t_all *cub, int key)
@@ -71,7 +73,7 @@ void event_up_down(t_all *cub, int key)
         cub->player.x += sin(cub->player.ang) * move;
         cub->player.y += cos(cub->player.ang) * move;
 	}
-	if (key == DOWN) 
+	else if (key == DOWN) 
 	{
 		cub->player.walk_direction = -1;
         move = cub->player.walk_direction * cub->player.speed;
