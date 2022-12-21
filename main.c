@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:37 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 21:07:34 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:19:58 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 int main()
 {
     t_all cub;
-    t_player mario;
 
-    init(&cub, &mario);
-    launch_mlx(&cub, &mario);
+    init(&cub);
+    launch_mlx(&cub);
 } 

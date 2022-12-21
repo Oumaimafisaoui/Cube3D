@@ -6,14 +6,14 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 18:19:32 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:24:23 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 
-void init(t_all *cub, t_player *mario)
+void init(t_all *cub)
 {
     cub->mlx = NULL;
     cub->mlx_win = NULL;
@@ -24,14 +24,14 @@ void init(t_all *cub, t_player *mario)
     cub->endian = 0;
     cub->map_h = 7 * CUBE;
     cub->map_w = 10 * CUBE;
-    mario->x = 0;
-    mario->y = 0;
-    cub->player = NULL;
-    mario->ang = -M_PI / 2;
-    mario->speed = 3.0;
-    mario->rotation_speed = M_PI / 2;
-    mario->turn_direction = 0; // -1 OR 1
-    mario->walk_direction = 0;
+    cub->player.x = 0;
+    cub->player.y = 0;
+    // cub->player = NULL;
+    cub->player.ang = -M_PI / 2;
+    cub->player.speed = 3.0;
+    cub->player.rotation_speed = 3 * (M_PI / 180); //3 degree per frame
+    cub->player.turn_direction = 0; // -1 OR 1
+    cub->player.walk_direction = 0;
     char walls[7][10] = {
     {'1','1','1','1','1','1','1','1','1',' '}, 
     {'1','0','0','0','0','0','0','0','1',' '}, 
@@ -61,19 +61,19 @@ void set_direction(t_all *cub)
         {
             if (cub->walls[i][j] == 'N')
             {
-                cub->player->ang = - M_PI / 2; 
+                cub->player.ang = - M_PI / 2; 
             }
             else if(cub->walls[i][j] == 'S')
             {
-                cub->player->ang = M_PI / 2;
+                cub->player.ang = M_PI / 2;
             }
             else if(cub->walls[i][j] == 'E')
             {
-                cub->player->ang = 0;
+                cub->player.ang = 0;
             }
             else if(cub->walls[i][j] == 'W')
             {
-                cub->player->ang = M_PI;
+                cub->player.ang = M_PI;
             }
             j++;
         }
@@ -81,9 +81,8 @@ void set_direction(t_all *cub)
     }
 }
 
-void launch_mlx(t_all *cub, t_player *mario)
+void launch_mlx(t_all *cub)
 {
-    // (void)mario;
     cub->mlx = mlx_init();
     if (cub->mlx == NULL)
 		error("mlx_init failed\n");
@@ -94,11 +93,12 @@ void launch_mlx(t_all *cub, t_player *mario)
 	cub->addr = mlx_get_data_addr(cub->img, &cub->bits_per_pixel, &cub->line_length,
 								&cub->endian);
     draw_minimap(cub);
-    put_player(cub, mario);
+    put_player(cub);
     set_direction(cub);
     dda(cub);
     // hook_player(cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
+    //mlx_hook(cub->mlx_win, 17, 0, exit_program, &cub);
 	mlx_loop(cub->mlx);
 }
 
