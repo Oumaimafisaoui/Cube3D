@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:24:23 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:58:35 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ void launch_mlx(t_all *cub)
 								&cub->endian);
     draw_minimap(cub);
     put_player(cub);
+    _7aytoti(cub);
     set_direction(cub);
     dda(cub);
-    // hook_player(cub);
+    mlx_hook(cub->mlx_win, 2, 1L<<0 , mouvements, cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
-    //mlx_hook(cub->mlx_win, 17, 0, exit_program, &cub);
 	mlx_loop(cub->mlx);
 }
 

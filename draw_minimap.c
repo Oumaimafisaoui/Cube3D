@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:23:13 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:54:40 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,11 +139,6 @@ void put_player(t_all *cub)
     int i = 0;
     int j = 0;
 
-    double h;
-    double angle;
-    double xp;
-    double yp;
-
    while(i < cub->map_h / CUBE)
     {
         j = 0;
@@ -153,23 +148,7 @@ void put_player(t_all *cub)
             {
                     cub->player.x = (i * CUBE) + CUBE / 2;
                     cub->player.y = (j * CUBE) + CUBE / 2;
-                    printf("%f|%f\n", cub->player.x, cub->player.y);
-                    my_mlx_pixel_put(cub, cub->player.y, cub->player.x, 0x00FFFFFF);
-                    //x = cos(o) * h + xs
-                    //y = sin(o) * h + ys
-                    h = 1;
-                    while(h < 5) // this h increments
-                    {
-                        angle = 0;
-                        while(angle < 360)
-                        {
-                            xp = cos(angle) * h + cub->player.x;
-                            yp = sin(angle) * h + cub->player.y;
-                            my_mlx_pixel_put(cub, yp, xp, 0x00FFFFFF);
-                            angle++;
-                        }
-                        h++;
-                    }
+                    // printf("%f|%f\n", cub->player.x, cub->player.y);
             }
             j++;
         }
@@ -177,5 +156,29 @@ void put_player(t_all *cub)
     } //because I need it in mouvemnets
 }
 
+void _7aytoti(t_all *cub)
+{
+    double h;
+    double angle;
+    double xp;
+    double yp;
+
+    my_mlx_pixel_put(cub, cub->player.y, cub->player.x, 0x00FFFFFF);
+    //x = cos(o) * h + xs
+    //y = sin(o) * h + ys
+    h = 1;
+    while(h < 5) // this h increments
+    {
+        angle = 0;
+        while(angle < 360)
+        {
+            xp = cos(angle) * h + cub->player.x;
+            yp = sin(angle) * h + cub->player.y;
+            my_mlx_pixel_put(cub, yp, xp, 0x00FFFFFF);
+            angle++;
+        }
+        h++;
+    }
+}
 
 

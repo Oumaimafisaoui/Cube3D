@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:39:22 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:24:39 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:31:13 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void dda(t_all *cub)
     x1 = cub->player.x + (sin(cub->player.ang) * VIEW);
     y1 = cub->player.y + (cos(cub->player.ang) * VIEW);
 
-    printf("%f,%f\n", x1, y1);
+    // printf("%f,%f\n", x1, y1);
     xinc = 0;
     yinc = 0;
     steps = 0;

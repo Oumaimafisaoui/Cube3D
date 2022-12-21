@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:22:33 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:54:46 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <stddef.h>
 #include <math.h>
-
+#include <stdio.h>
 #define CUBE  60
 #define VIEW  30
 
@@ -69,7 +69,6 @@ void launch_mlx(t_all *cub);
 void draw_minimap(t_all *cub);
 void	my_mlx_pixel_put(t_all *cub, int x, int y, int color);
 void put_player(t_all *cub);
-void hook_player(t_all* cub);
 int	mouvements(int key, t_all *cub);
 void dda(t_all *cub);
 void set_direction(t_all *cub);
@@ -79,4 +78,6 @@ int	exit_program(t_all *cub);
 
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
+
+void _7aytoti(t_all *cub);
 #endif
