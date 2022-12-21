@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/20 21:07:00 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:18:53 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include <stddef.h>
 #include <math.h>
 
-#define TTL  60
-#define VIEW  40
+#define CUBE  60
+#define VIEW  30
 
 // char walls[7][10] = {
 //     {'1','1','1','1','1','1','1','1','1','1'}, 
@@ -39,6 +39,10 @@ typedef struct s_player
     double y;
     double ang;
     double speed;
+    double turn_direction;
+    double walk_direction;
+    double rotation_speed;
+    
 }t_player;
 
 typedef struct s_cub
@@ -50,8 +54,6 @@ typedef struct s_cub
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-    int x;
-    int y;
     int map_w;
     int map_h;
     t_player *player;
@@ -70,7 +72,7 @@ void put_player(t_all *cub, t_player *mario);
 void hook_player(t_all* cub);
 int	mouvements(int key, t_all *cub);
 void dda(t_all *cub);
-
+void set_direction(t_all *cub);
 /*Cub3d outils*/
 
 void	ft_putstr_fd(char *s, int fd);
