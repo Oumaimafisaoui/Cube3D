@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:54:46 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/21 20:56:24 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #define CUBE  60
 #define VIEW  30
 
+#define UP  126
+#define DOWN 125
+#define RIGHT 124
+#define LEFT 123
 // char walls[7][10] = {
 //     {'1','1','1','1','1','1','1','1','1','1'}, 
 //     {'1','0','0','0','0','0','0','0','0','1'}, 
@@ -73,6 +77,7 @@ int	mouvements(int key, t_all *cub);
 void dda(t_all *cub);
 void set_direction(t_all *cub);
 int	exit_program(t_all *cub);
+void event_left_right(t_all *cub, int key);
 
 /*Cub3d outils*/
 
