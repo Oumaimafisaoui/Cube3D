@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:27:59 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 22:08:26 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:52:04 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,8 @@ void rotate_player(int key, t_all *cub)
 }
 int	mouvements(int key, t_all *cub)
 {
-    printf("%d\n", key);
+    //x is y and y is x
+    printf("x: %f | y : %f\n", cub->player.x , cub->player.y);
 	if (key == RIGHT || key == LEFT)
 		event_left_right(cub, key);
 	else if (key == UP || key == DOWN)

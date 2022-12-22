@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:58:35 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:56:43 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void init(t_all *cub)
     cub->player.x = 0;
     cub->player.y = 0;
     // cub->player = NULL;
-    cub->player.ang = -M_PI / 2;
+    cub->player.ang = M_PI;
     cub->player.speed = 3.0;
     cub->player.rotation_speed = 3 * (M_PI / 180); //3 degree per frame
     cub->player.turn_direction = 0; // -1 OR 1
@@ -35,7 +35,7 @@ void init(t_all *cub)
     char walls[7][10] = {
     {'1','1','1','1','1','1','1','1','1',' '}, 
     {'1','0','0','0','0','0','0','0','1',' '}, 
-    {'1','0','0','0','0','E','0','0','1',' '}, 
+    {'1','0','0','0','0','S','0','0','1',' '}, 
     {'1','0','0','0','0','0','0','0','1','1'}, 
     {'1','0','0','0','0','0','0','0','0','1'}, 
     {'1','0','0','0','0','0','0','0','0','1'}, 
@@ -61,7 +61,7 @@ void set_direction(t_all *cub)
         {
             if (cub->walls[i][j] == 'N')
             {
-                cub->player.ang = - M_PI / 2; 
+                cub->player.ang = (3 * M_PI) / 2; 
             }
             else if(cub->walls[i][j] == 'S')
             {
@@ -69,11 +69,11 @@ void set_direction(t_all *cub)
             }
             else if(cub->walls[i][j] == 'E')
             {
-                cub->player.ang = 0;
+                cub->player.ang = M_PI;
             }
             else if(cub->walls[i][j] == 'W')
             {
-                cub->player.ang = M_PI;
+                cub->player.ang = 0;
             }
             j++;
         }
