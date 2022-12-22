@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/22 13:52:38 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:21:38 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <math.h>
 #include <stdio.h>
 #define CUBE  60
-#define VIEW  30
+#define VIEW  300
 
 #define UP  126
 #define DOWN 125
@@ -83,6 +83,7 @@ void event_left_right(t_all *cub, int key);
 int check_walls2(t_all *cub, int flag);
 int check_walls1(t_all *cub, int flag);
 
+void	my_mlx_pixel_put2(t_all *cub, int x, int y, int color);
 
 
 /*Cub3d outils*/
