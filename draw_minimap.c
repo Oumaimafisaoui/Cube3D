@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 20:51:55 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:11:47 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,61 +26,61 @@ void draw_minimap(t_all *cub)
 	int i = 0;
     int j = 0;
 
-    int x = 0;
     int y = 0;
+    int x = 0;
 	while(i < cub->map_h / CUBE) // i will itterate on 7 height
     {
         j = 0;
         while(j < cub->map_w / CUBE) // j will itterate on 10 width
         {
            
-            x = i * CUBE; // x will be the height of the square
+            y = i * CUBE; // y will be the height of the square
             if (cub->walls[i][j] == '1')
             {
-                while(x < (i * CUBE) + CUBE) //while the height is less than the end of the square
+                while(y < (i * CUBE) + CUBE) //while the height is less than the end of the square
                 {
-                     y = j * CUBE;
-                     while (y < (j * CUBE) + CUBE)
+                     x = j * CUBE;
+                     while (x < (j * CUBE) + CUBE)
                      {
-                        if (x % CUBE == 0 || y % CUBE == 0) //put black line
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
+                        if (y % CUBE == 0 || x % CUBE == 0) //put black line
+                            my_mlx_pixel_put(cub, x, y, 0x00000000);
                         else
-                            my_mlx_pixel_put(cub, y, x, 0x00FFFF00);
-                        y++;
+                            my_mlx_pixel_put(cub, x, y, 0x00FFFF00);
+                        x++;
                      }
-                     x++;
+                     y++;
                 }
             }
             else if(cub->walls[i][j] == '0')
             {
-                while(x < (i * CUBE) + CUBE) 
+                while(y < (i * CUBE) + CUBE) 
                 {
-                     y = j * CUBE;
-                     while (y < (j * CUBE) + CUBE)
+                     x = j * CUBE;
+                     while (x < (j * CUBE) + CUBE)
                      {
-                        if (x % CUBE == 0 || y % CUBE == 0)
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
+                        if (y % CUBE == 0 || x % CUBE == 0)
+                            my_mlx_pixel_put(cub, x, y, 0x00000000);
                         else
-                            my_mlx_pixel_put(cub, y, x,0x009966FF);
-                        y++;
+                            my_mlx_pixel_put(cub, x, y,0x009966FF);
+                        x++;
                      }
-                     x++;
+                     y++;
                 }
             }
             else
             {
-                while(x < (i * CUBE) + CUBE) 
+                while(y < (i * CUBE) + CUBE) 
                 {
-                     y = j * CUBE;
-                     while (y < (j * CUBE) + CUBE)
+                     x = j * CUBE;
+                     while (x < (j * CUBE) + CUBE)
                      {
-                        if (x % CUBE == 0 || y % CUBE == 0)
-                            my_mlx_pixel_put(cub, y, x, 0x00000000);
+                        if (y % CUBE == 0 || x % CUBE == 0)
+                            my_mlx_pixel_put(cub, x, y, 0x00000000);
                         else
-                            my_mlx_pixel_put(cub, y, x,0x00FF3333);
-                        y++;
+                            my_mlx_pixel_put(cub, x, y,0x00FF3333);
+                        x++;
                      }
-                     x++;
+                     y++;
                 }
             }
             j++;
@@ -89,71 +89,26 @@ void draw_minimap(t_all *cub)
     }
     
 }
-/* 
-void put_player(t_all *cub, t_player *mario)
-{
-    int i = 0;
-    int j = 0;
-
-    double h;
-    double angle;
-    double xp;
-    double yp;
-
-   while(i < cub->map_h / CUBE)
-    {
-        j = 0;
-        while(j < cub->map_w / CUBE)
-        {
-            if (cub->walls[i][j] == 'N' || cub->walls[i][j] == 'S' || cub->walls[i][j] == 'W' || cub->walls[i][j] == 'E') //it can be other directions
-            {
-                    mario->x = (i * CUBE) + CUBE / 2;
-                    mario->y = (j * CUBE) + CUBE / 2;
-                    printf("%f|%f\n", mario->x, mario->y);
-                    my_mlx_pixel_put(cub, mario->y, mario->x, 0x00FFFFFF);
-                    //x = cos(o) * h + xs
-                    //y = sin(o) * h + ys
-                    h = 1;
-                    while(h < 5) // this h increments
-                    {
-                        angle = 0;
-                        while(angle < 360)
-                        {
-                            xp = cos(angle) * h + mario->x;
-                            yp = sin(angle) * h + mario->y;
-                            my_mlx_pixel_put(cub, yp, xp, 0x00FFFFFF);
-                            angle++;
-                        }
-                        h++;
-                    }
-            }
-            j++;
-        }
-        i++;
-    }
-    cub->player = mario; //because I need it in mouvemnets
-} */
 
 void put_player(t_all *cub)
 {
     int i = 0;
     int j = 0;
 
-   while(i < cub->map_h / CUBE)
+    while(i < cub->map_h / CUBE)
     {
         j = 0;
         while(j < cub->map_w / CUBE)
         {
             if (cub->walls[i][j] == 'N' || cub->walls[i][j] == 'S' || cub->walls[i][j] == 'W' || cub->walls[i][j] == 'E') //it can be other directions
             {
-                    cub->player.x = (i * CUBE) + CUBE / 2;
-                    cub->player.y = (j * CUBE) + CUBE / 2;
-                    // printf("%f|%f\n", cub->player.x, cub->player.y);
+                    cub->player.y = (i * CUBE) + CUBE / 2;
+                    cub->player.x = (j * CUBE) + CUBE / 2;
             }
             j++;
         }
         i++;
-    } //because I need it in mouvemnets
+    } 
 }
 
 void _7aytoti(t_all *cub)
@@ -163,7 +118,7 @@ void _7aytoti(t_all *cub)
     double xp;
     double yp;
 
-    my_mlx_pixel_put(cub, cub->player.y, cub->player.x, 0x00FFFFFF);
+    my_mlx_pixel_put(cub, cub->player.x, cub->player.y, 0x00FFFFFF);
     //x = cos(o) * h + xs
     //y = sin(o) * h + ys
     h = 1;
@@ -174,7 +129,7 @@ void _7aytoti(t_all *cub)
         {
             xp = cos(angle) * h + cub->player.x;
             yp = sin(angle) * h + cub->player.y;
-            my_mlx_pixel_put(cub, yp, xp, 0x00FFFFFF);
+            my_mlx_pixel_put(cub, xp, yp, 0x00FFFFFF);
             angle++;
         }
         h++;

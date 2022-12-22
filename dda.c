@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:39:22 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 19:31:13 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:12:39 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void dda(t_all *cub)
 
     //why pi / 2 looks down : becaue they go in the way of the horloge in game development
     
-    x1 = cub->player.x + (sin(cub->player.ang) * VIEW);
-    y1 = cub->player.y + (cos(cub->player.ang) * VIEW);
+    x1 = cub->player.x + (cos(cub->player.ang) * VIEW);
+    y1 = cub->player.y + (sin(cub->player.ang) * VIEW);
 
     // printf("%f,%f\n", x1, y1);
     xinc = 0;
@@ -46,7 +46,7 @@ void dda(t_all *cub)
 
     for(double i = 0; i < steps; i++)
     {
-        my_mlx_pixel_put(cub, yy1, xx1, 0x00FFFFFF);
+        my_mlx_pixel_put(cub, xx1, yy1, 0x00FFFFFF);
         xx1 = xx1 + xinc;
         yy1 = yy1 + yinc;
     }
