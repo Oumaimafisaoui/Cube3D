@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/21 20:56:24 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:52:38 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct s_cub
 //all walls should be removed and added to a struct
 
 /* Cub3d */
+
+
 void init(t_all *cub);
 void	error(char *str);
 void launch_mlx(t_all *cub);
@@ -78,9 +80,12 @@ void dda(t_all *cub);
 void set_direction(t_all *cub);
 int	exit_program(t_all *cub);
 void event_left_right(t_all *cub, int key);
+int check_walls2(t_all *cub, int flag);
+int check_walls1(t_all *cub, int flag);
+
+
 
 /*Cub3d outils*/
-
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 
