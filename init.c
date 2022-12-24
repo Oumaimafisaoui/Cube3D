@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:57:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/22 14:43:38 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/24 10:48:59 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void init(t_all *cub)
     // cub->player = NULL;
     cub->player.ang = M_PI;
     cub->player.speed = 4;
-    cub->player.rotation_speed = 3 * (M_PI / 180); //3 degree per frame
+    cub->player.rotation_speed = 3 * (M_PI / 180); //3 degree per frame it is in radian
     cub->player.turn_direction = 0; // -1 OR 1
     cub->player.walk_direction = 0;
     char walls[7][10] = {
     {'1','1','1','1','1','1','1','1','1',' '}, 
     {'1','0','0','0','0','0','0','0','1',' '}, 
-    {'1','0','0','0','0','S','0','0','1',' '}, 
-    {'1','0','0','0','0','0','1','0','1','1'}, 
-    {'1','0','0','0','0','0','0','1','0','1'}, 
+    {'1','0','0','0','0','N','0','0','1',' '}, 
+    {'1','0','0','1','0','0','1','0','1','1'}, 
+    {'1','0','1','0','0','0','0','1','0','1'}, 
     {'1','0','0','0','0','0','0','0','0','1'}, 
     {'1','1','1','1','1','1','1','1','1','1'},   
     };
@@ -86,9 +86,10 @@ void launch_mlx(t_all *cub)
 								&cub->endian);
     draw_minimap(cub);
     put_player(cub);
-    _7aytoti(cub);
+    big_circle(cub);
     set_direction(cub);
     dda(cub);
+    // dda2(cub);
     mlx_hook(cub->mlx_win, 2, 1L<<0 , mouvements, cub);
     mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img, 0, 0);
 	mlx_loop(cub->mlx);
@@ -101,19 +102,3 @@ void	error(char *str)
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }
-
-// int	exit_program(t_all *cub)
-// {
-// 	int	index;
-
-// 	index = 0;
-// 	if (cub->mlx_win)
-// 		mlx_destroy_window(cub->mlx, cub->mlx_win);
-// 	while (index < cub->map_h)
-// 	{
-// 		free(cub->parse[index]);
-// 		index++;
-// 	}
-// 	free(map->parse);
-// 	exit(0);
-// }

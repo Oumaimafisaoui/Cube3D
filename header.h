@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:18:49 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/22 15:21:38 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:01:59 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	exit_program(t_all *cub);
 void event_left_right(t_all *cub, int key);
 int check_walls2(t_all *cub, int flag);
 int check_walls1(t_all *cub, int flag);
-
+void dda2(t_all *cub);
 void	my_mlx_pixel_put2(t_all *cub, int x, int y, int color);
 
 
@@ -90,5 +90,5 @@ void	my_mlx_pixel_put2(t_all *cub, int x, int y, int color);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 
-void _7aytoti(t_all *cub);
+void big_circle(t_all *cub);
 #endif

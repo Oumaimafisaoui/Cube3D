@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:58:11 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/22 15:21:29 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:01:59 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void put_player(t_all *cub)
     } 
 }
 
-void _7aytoti(t_all *cub)
+void big_circle(t_all *cub)
 {
     double h;
     double angle;
