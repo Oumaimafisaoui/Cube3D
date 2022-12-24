@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:49:34 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/24 12:16:23 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/24 12:21:54 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int check_walls2(t_all *cub, int flag)
     {
        x = (cub->player.x + (cos(cub->player.ang) * cub->player.speed)) / CUBE;
        y = (cub->player.y + (sin(cub->player.ang) * cub->player.speed)) / CUBE;
-       printf("fo9i {%c} {%c}\n", cub->walls[y][(int)cub->player.x / CUBE], cub->walls[(int)cub->player.y / CUBE][x]);
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
+    //    printf("fo9i {%c} {%c}\n", cub->walls[y][(int)cub->player.x / CUBE], cub->walls[(int)cub->player.y / CUBE][x]);
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
        if(cub->walls[y][x] == '1' || (cub->walls[y][(int)cub->player.x / CUBE] == '1' && cub->walls[(int)cub->player.y / CUBE][x] == '1')) //ta9ato3
             return (1);
        else
@@ -73,13 +73,13 @@ int check_walls2(t_all *cub, int flag)
     {
         x = (cub->player.x + (cos(cub->player.ang) * speed)) / CUBE;
         y =  (cub->player.y + (sin(cub->player.ang) * speed)) / CUBE;
-          printf("ta7et {%c} {%c}\n", cub->walls[y][(int)cub->player.x / CUBE], cub->walls[(int)cub->player.y / CUBE][x]);
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
-       printf("############################################\n");
+    //       printf("ta7et {%c} {%c}\n", cub->walls[y][(int)cub->player.x / CUBE], cub->walls[(int)cub->player.y / CUBE][x]);
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
+    //    printf("############################################\n");
         if(cub->walls[y][x] == '1' || (cub->walls[y][(int)cub->player.x / CUBE] == '1' && cub->walls[(int)cub->player.y / CUBE][x] == '1'))
                 return (1);
         else
